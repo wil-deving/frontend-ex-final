@@ -2,16 +2,23 @@
  * Created by Williams on 17/2/2020.
  */
 
-var protocol = 'http'
-var host = 'localhost'
-var port = '80'
-var nameBackSQL = 'IASHanban'
-var nameServiceSQl = 'QueriesExecute'
+const protocol = 'http'
+const host = 'localhost'
+const port = '80'
+const nameBackSQL = 'ShopCar'
+const nameServiceSQlForData = 'ForDataQuery'
+const nameServiceSQlABM = 'ABMQuery'
 
-export const ConfigServicesSQl = {
-    protocol: protocol,
-    host: host,
-    port: port,
-    nameService: nameBackSQL + '/' + nameServiceSQl + '/',
-    timer: 60000
+export function ConfigServicesSQl (typeQuery = 'select') {
+    let nameServiceSQl = nameServiceSQlForData
+    if (typeQuery === 'insertar' || typeQuery === 'modificar' || typeQuery === 'eliminar') {
+        nameServiceSQl = nameServiceSQlABM
+    }
+    return {
+        protocol: protocol,
+        host: host,
+        port: port,
+        nameService: nameBackSQL + '/' + nameServiceSQl + '/',
+        timer: 60000
+    }
 }

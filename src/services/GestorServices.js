@@ -45,8 +45,8 @@ export default class GestorServices {
         })
     }
 
-    ExecuteSimpleQuery (Consulta = '') {
-        let urlReq = this.buildUrlServiceSQL()
+    ExecuteSimpleQuery (Consulta = '', type = 'select') {
+        let urlReq = this.buildUrlServiceSQL(type)
         var parametros = { //cada parámetro se pasa con un nombre en un array asociativo
             "sql": Consulta
         }
@@ -78,9 +78,10 @@ export default class GestorServices {
         })
     }
 
-    buildUrlServiceSQL (parameters = ConfigServicesSQl) {
-        return ConfigServicesSQl.protocol + '://' + ConfigServicesSQl.host + ':' + ConfigServicesSQl.port +
-            '/' + ConfigServicesSQl.nameService
+    buildUrlServiceSQL (type = 'select') {
+        let configServicesSQl = ConfigServicesSQl(type)
+        return configServicesSQl.protocol + '://' + configServicesSQl.host + ':' + configServicesSQl.port +
+            '/' + configServicesSQl.nameService
     }
 
 
