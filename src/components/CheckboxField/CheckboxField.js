@@ -5,12 +5,24 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 //Seccion que importa los estilos del componente
-//import './'
+import './CheckboxField.scss'
 
 class CheckboxField extends Component {
 
+    /*TODO estados y propiedades del componente*/
+    /*
+     * visible-> bool que muestra u oculta el componente
+     * tagComponent-> string que muestra el texto general que sobre el campo (label)
+     * enabled-> bool que habilita o no el componente
+     * value-> array de los items que seleccionara el user
+     * checksList-> array con el siguiente formatao
+     * todo [ { tag: 'check 1', value: 'id1' }, { tag: 'check 2', value: 'id2', activo: true }]
+     * onClickCheck-> funcion que retorna al padre el valor seleccionado
+     * */
+
     static propTypes = {
         visible: PropTypes.bool,
+        enabled: PropTypes.bool,
         tagComponent: PropTypes.string,
         value: PropTypes.array,
         checksList: PropTypes.array,
@@ -21,6 +33,7 @@ class CheckboxField extends Component {
         super(props)
         this.state = {
             visible: this.props.visible,
+            enabled: this.props.enabled,
             tagComponent: this.props.tagComponent,
             value: this.props.value,
             checksList: this.props.checksList,
@@ -34,6 +47,7 @@ class CheckboxField extends Component {
 
     static defaultProps = {
         visible: true,
+        enabled: true,
         tagComponent: 'Lista Checks',
         value: [],
         checksList: []
@@ -96,9 +110,12 @@ class CheckboxField extends Component {
                 active = true
             }
             return(
-                <div key={numCh} >
-                    <label htmlFor={numCh} >{itemCh.tag}</label>
+                <div key={numCh} className="item-lbl-check">
+                    <label htmlFor={numCh} className={'tag-item'}>
+                        {itemCh.tag}
+                    </label>
                     <input id={numCh}
+                        disabled={!this.state.enabled}
                         type="checkbox"
                         name={itemCh.value}
                         value={itemCh.value}
@@ -147,19 +164,17 @@ class CheckboxField extends Component {
         console.log('renderComponentCheckBox', this.props.checksList)
         if (this.props.checksList.length > 0) {
             return(
-                <div>
+                <div className="general-checks" hidden={!this.state.visible}>
                     <div>
-                        <span>{this.props.tagComponent}</span>
+                        <span className="general-tag general-check-comp">{this.props.tagComponent}</span>
                     </div>
-                    <div>
-                        {this.armarChecks()}
-                    </div>
+                    {this.armarChecks()}
                 </div>
             )
         } else {
             return(
-                <div>
-                    <span>{'Sin checks'}</span>
+                <div className="general-checks">
+                    <span className="general-tag">{'Sin checks'}</span>
                 </div>
             )
         }

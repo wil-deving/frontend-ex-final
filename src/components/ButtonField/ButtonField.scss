@@ -1,0 +1,112 @@
+$darkColor: #272727;
+$disabledDefault: #dadada;
+$primaryColor: #4f81c7;
+$succesColor: #08ffc8;
+$warningColor: #ec9b3b;
+$dangerColor: #ef4b4b;
+
+.general-boton {
+  margin: 15px 25px;
+  padding: 0px;
+  text-align: center;
+}
+
+#button {
+  display: inline-block;
+  width: 100%;
+  height: 25px;
+}
+
+.border {
+  border: $darkColor .5px solid;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.general-button {
+  padding: 10px 0px 30px 0px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 120%;
+  cursor: pointer;
+}
+
+.default {
+  background: #fff;
+  color: $darkColor;
+}
+
+.default:hover {
+  background: #ecf4f3;
+  color: $darkColor;
+}
+
+.default:disabled {
+  background: $disabledDefault;
+  color: $darkColor;
+  cursor: no-drop;
+}
+
+.primary {
+  background: $primaryColor;
+  color: #fff;
+}
+
+.primary:hover {
+  background: #64c4ed;
+  color: #fff;
+}
+
+.primary:disabled {
+  background: #204969;
+  color: $darkColor;
+  cursor: no-drop;
+}
+
+.warning {
+  background: $warningColor;
+  color: #fff;
+}
+
+.warning:hover {
+  background: #e0f5b9;
+  color: $darkColor;
+}
+
+.warning:disabled {
+  background: #e88a1a;
+  color: $darkColor;
+  cursor: no-drop;
+}
+
+.danger {
+   background: $dangerColor;
+   color: #fff;
+ }
+
+.danger:hover {
+  background: #ff8080;
+  color: #fff;
+}
+
+.danger:disabled {
+  background: #b5525c;
+  color: $darkColor;
+  cursor: no-drop;
+}
+
+.succes {
+  background: #00bdaa;
+  color: #fff;
+}
+
+.succes:hover {
+  background: $succesColor;
+  color: $darkColor;
+}
+
+.succes:disabled {
+  background: #105e62;
+  color: $darkColor;
+  cursor: no-drop;
+}
