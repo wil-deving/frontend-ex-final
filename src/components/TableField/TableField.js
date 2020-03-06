@@ -11,25 +11,62 @@ import './TableField.scss'
 
 class TableField extends Component {
 
+    /*
+    * TODO importante explicacion del componente
+    * visible-> bool que muestra u oculta el componente
+    * tagComponent-> Etiqueta para el componente (ej. mi lista favorita)
+    * head->array de strings con el nombre que tendran las cabeceras
+    * data->array de datos que renderizara dinamicamente, importante que cuando se traiga
+    *       una lista se debe coincidir con el 'identificador' ya que la propiedad con este
+    *       nombre sera ocultado y ese valor sera devuelto al padre para su update o delete
+    *       segun sea el caso.
+    * identificador->estado que manejara por detras de la tabla el nombre de la propiedad de la
+    *                lista en 'data', ademas de ocultar todos los items que corresponda a esa
+    *                propiedad en la lista, por decir, identificador='id_use', los valores de la
+    *                lista que esten en la propiedad seran ocultos.
+    * forUpdate-> bool que oculta o muestra la columna editar
+    * forDelete-> bool que oculta o muestra la columna eliminar
+    * onClickItem->retorna a la funcion indicada en el padre el valor del 'identificador' del item
+    *              seleccionado. Y el tipo de accion (update, delete).
+    * */
+
     static propTypes = {
-        datos: PropTypes.array,
-        visible: PropTypes.bool
+        head: PropTypes.array,
+        data: PropTypes.array,
+        visible: PropTypes.bool,
+        identificador: PropTypes.string,
+        forUpdate: PropTypes.bool,
+        forDelete: PropTypes.bool,
+        tagComponent: PropTypes.string,
+        onClickItem: PropTypes.func
     }
 
     constructor(props){
         super(props)
         this.state = {
-            datos: this.props.datos,
-            visible: this.props.visible
+            data: this.props.data,
+            head: this.props.head,
+            visible: this.props.visible,
+            identificador: this.props.identificador,
+            forUpdate: this.props.forUpdate,
+            forDelete: this.props.forDelete,
+            tagComponent: this.props.tagComponent,
+            onClickItem: this.props.onClickItem
         }
         // bindeo para funciones y metodos
         this.armarCabecera = this.armarCabecera.bind(this)
         this.armarContenido = this.armarContenido.bind(this)
+        this.handleItem = this.handleItem.bind(this)
     }
 
     static defaultProps = {
-        datos: [],
-        visible: true
+        head: [],
+        data: [],
+        visible: true,
+        identificador: '',
+        forUpdate: false,
+        forDelete: false,
+        tagComponent: ''
     }
 
     componentWillMount(){
@@ -49,8 +86,28 @@ class TableField extends Component {
                 this.setState({ visible: false })
             }
         }
-        if (nextProps.datos !== null) {
-            this.setState({ datos: nextProps.datos })
+        if (nextProps.forUpdate !== null) {
+            if (nextProps.forUpdate) {
+                this.setState({ forUpdate: true })
+            } else {
+                this.setState({ forUpdate: false })
+            }
+        }
+        if (nextProps.forDelete !== null) {
+            if (nextProps.forDelete) {
+                this.setState({ forDelete: true })
+            } else {
+                this.setState({ forDelete: false })
+            }
+        }
+        if (nextProps.head !== null) {
+            this.setState({ head: nextProps.head })
+        }
+        if (nextProps.data !== null) {
+            this.setState({ data: nextProps.data })
+        }
+        if (nextProps.onClickItem !== null) {
+            this.setState({ onClickItem: nextProps.onClickItem })
         }
     }
 
@@ -72,21 +129,17 @@ class TableField extends Component {
     }
 
     armarCabecera () {
-        //let arrayTest = [
-        //    { id: 1, name: 'Williams', address: 'Llojeta' },
-        //    { id: 2, name: 'Cristian', address: 'El Alto' },
-        //    { id: 3, name: 'Eduardo', address: 'Lojeta' },
-        //    { id: 4, name: 'Dexter', address: 'Cotahuma' }
-        //]
-
-        let forHead = this.state.datos[0]
-        let arrHead = []
-        for(let prop in forHead){
-            arrHead.push(prop)
+        // console.log('armarCabecera', this.props.head)
+        let forHead = this.props.head
+        if (this.state.forUpdate) {
+            forHead.push('Editar')
         }
-        let head = arrHead.map((itemH, numH) => {
+        if (this.state.forDelete) {
+            forHead.push('Eliminar')
+        }
+        let head = forHead.map((itemH, numH) => {
             return(
-                <td key={numH} >{itemH}</td>
+                <th key={numH} scope="col">{itemH}</th>
             )
         })
         return(
@@ -95,28 +148,50 @@ class TableField extends Component {
     }
 
     armarContenido () {
-
         return(
-            <ContentTable litaContenido={this.state.datos} />
+            <ContentTable
+                identificadorUnico={this.state.identificador}
+                listaContenido={this.state.data}
+                forUpdate={this.state.forUpdate}
+                forDelete={this.state.forDelete}
+                onClickItemTable={this.handleItem} />
         )
+    }
 
+    handleItem (val, action) {
+        // console.log('handleItem', val, action)
+        if (this.state.onClickItem !== null && this.state.onClickItem !== undefined) {
+            this.state.onClickItem(val, action)
+        }
     }
 
     render () {
         // console.log('renderComponent')
-
-        return(
-            <div>
-                <table align="center" cellSpacing="2" cellPadding="2" border="1">
-                    <tbody>
+        if (this.state.data.length > 0) {
+            return(
+                <div hidden={!this.state.visible} className="table-responsive-md">
+                    <div className="tag-comp-table">
+                        <span className="tag-table">{this.props.tagComponent}</span>
+                    </div>
+                    <table className="table table-hover table-condensed table-bordered table-especific">
+                        <thead className="thead-dark">
                         <tr>
                             {this.armarCabecera()}
                         </tr>
+                        </thead>
+                        <tbody>
                         {this.armarContenido()}
-                    </tbody>
-                </table>
-            </div>
-        )
+                        </tbody>
+                    </table>
+                </div>
+            )
+        } else {
+            return(
+                <div className="tag-comp-table">
+                    <span className="tag-table">{'Sin Resultados'}</span>
+                </div>
+            )
+        }
     }
 }
 export default TableField

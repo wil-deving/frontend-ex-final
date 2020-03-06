@@ -13,7 +13,7 @@ class ButtonField extends Component {
     * visible-> bool que muestra u oculta el componente
     * texto-> string que muestra el texto que tendra el boton
     * enabled-> bool que habilita o no el componente
-    * type-> tipo de boton para los estilos (succes, primary, default, warning, danger)
+    * type-> tipo de boton para los estilos (success, primary, default, warning, danger)
     * onClick-> Funcion que ejecutara en el padre
     * */
 
