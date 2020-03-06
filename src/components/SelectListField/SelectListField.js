@@ -5,28 +5,61 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 //Seccion que importa los estilos del componente
-//import './'
+import './SelectListField.scss'
 
 class MiComponente extends Component {
 
     static propTypes = {
-        visible: PropTypes.bool
+        visible: PropTypes.bool,
+        enabled: PropTypes.bool,
+        tagComponent: PropTypes.string,
+        value: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]),
+        defaultSelected: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]),
+        optionsList: PropTypes.array,
+        onClickOption: PropTypes.func
     }
 
     constructor(props){
         super(props)
         this.state = {
-            visible: this.props.visible
+            visible: this.props.visible,
+            enabled: this.props.enabled,
+            tagComponent: this.props.tagComponent,
+            value: this.props.value,
+            defaultSelected: this.props.defaultSelected,
+            optionsList: this.props.optionsList,
+            onClickOption: this.props.onClickOption
         }
         // bindeo para funciones y metodos
+        this.armarOptions = this.armarOptions.bind(this)
+        this.onSelectedOption = this.onSelectedOption.bind(this)
+        this.sss = this.sss.bind(this)
     }
 
     static defaultProps = {
-        visible: true
+        visible: true,
+        enabled: true,
+        tagComponent: 'Lista Options',
+        value: '',
+        defaultSelected: '',
+        optionsList: []
     }
 
     componentWillMount(){
         //console.log('componentWillMountComponent')
+        //let forValue = ''
+        //for (let i in this.state.optionsList) {
+        //    if (this.state.defaultSelected === this.state.optionsList[i].value) {
+        //        forValue = this.state.optionsList[i].value
+        //    }
+        //}
+        //this.setState({ value: forValue })
     }
 
     componentDidMount(){
@@ -42,10 +75,17 @@ class MiComponente extends Component {
                 this.setState({ visible: false })
             }
         }
+        if (nextProps.optionsList !== null && nextProps.optionsList !== undefined) {
+            this.setState({ optionsList: nextProps.optionsList })
+        }
+        if (nextProps.onClickOption !== undefined && nextProps.onClickOption !== null) {
+            this.setState({ onClickOption: nextProps.onClickOption })
+        }
     }
 
     shouldComponentUpdate(nextProps, nextState){
         //console.log('shouldComponentUpdateComponent', nextProps, nextState)
+        return true
     }
 
     componentWillUpdate(nextProps, nextState){
@@ -60,11 +100,61 @@ class MiComponente extends Component {
         //console.log('componentWillUnmountComponent')
     }
 
+    armarOptions () {
+        console.log('armarOptions', this.state.optionsList)
+        let defaultOptions = [ { tag: 'Seleccionar...', value: '' } ]
+        let forMapArr = defaultOptions.concat(this.state.optionsList)
+
+        let options = forMapArr.map((itemOp, numOp) => {
+            let enabled = true
+            if (itemOp.value === 'seleccionar') {
+                //enabled = false
+            }
+            if (itemOp.disabled !== undefined && itemOp.disabled !== null) {
+                enabled = false
+            }
+
+            return(
+                <option key={numOp}
+                    ref={numOp}
+                    value={itemOp.value}
+                    name={itemOp.name}
+                    disabled={!enabled}
+                    onClick={() => this.onSelectedOption(itemOp.value)} >
+                    {itemOp.tag}
+                </option>
+            )
+        })
+        return options
+    }
+
+    onSelectedOption (val) {
+        console.log('onSelectedOption', val)
+        if (this.state.onClickOption !== undefined && this.state.onClickOption !== null) {
+            this.state.onClickOption(val)
+        }
+        this.setState({ value: val })
+    }
+
+    sss(ssssss) {
+        console.log('WWWWWWWWWWWWW', ssssss)
+    }
+
     render () {
         console.log('renderComponent')
         return(
-            <div>
-                Componente X
+            <div hidden={!this.state.visible} className="general-select">
+                <div className="cont-tag-comp comp-select-def">
+                    <label className="lbl-tag-comp-select">{this.props.tagComponent}</label>
+                </div>
+                <div className="cont-select-ops">
+                    <select className="select-comp comp-select-def"
+                        defaultValue={this.state.defaultSelected}
+                        onChange={() => this.sss()}
+                        disabled={!this.state.enabled} >
+                        {this.armarOptions()}
+                    </select>
+                </div>
             </div>
         )
     }

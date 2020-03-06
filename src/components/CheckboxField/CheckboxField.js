@@ -54,7 +54,7 @@ class CheckboxField extends Component {
     }
 
     componentWillMount(){
-        console.log('componentWillMountComponentCheckBox', this.props.checksList)
+        // console.log('componentWillMountComponentCheckBox', this.props.checksList)
         let arr = []
         for (let i in this.props.checksList) {
             if (this.props.checksList[i].activo !== undefined && this.props.checksList[i].activo !== null) {
@@ -111,15 +111,15 @@ class CheckboxField extends Component {
             }
             return(
                 <div key={numCh} className="item-lbl-check">
-                    <label htmlFor={numCh} className={'tag-item'}>
+                    <label htmlFor={numCh} className={'tag-itemCh'}>
                         {itemCh.tag}
                     </label>
                     <input id={numCh}
-                        disabled={!this.state.enabled}
                         type="checkbox"
                         name={itemCh.value}
                         value={itemCh.value}
                         defaultChecked={active}
+                        disabled={!this.state.enabled}
                         onClick={() => this.validateClick(itemCh.value)} />
                 </div>
             )
@@ -128,7 +128,7 @@ class CheckboxField extends Component {
     }
 
     validateClick (val) {
-        console.log('onClickCheck', val)
+        //  console.log('onClickCheck', val)
         this.setingValue(val)
         if (this.state.onClickCheck !== undefined && this.state.onClickCheck !== null) {
             this.state.onClickCheck(val)
@@ -161,7 +161,7 @@ class CheckboxField extends Component {
     }
 
     render () {
-        console.log('renderComponentCheckBox', this.props.checksList)
+        // console.log('renderComponentCheckBox', this.props.checksList)
         if (this.props.checksList.length > 0) {
             return(
                 <div className="general-checks" hidden={!this.state.visible}>
@@ -174,12 +174,10 @@ class CheckboxField extends Component {
         } else {
             return(
                 <div className="general-checks">
-                    <span className="general-tag">{'Sin checks'}</span>
+                    <span className="general-tagCh">{'Sin checks'}</span>
                 </div>
             )
         }
-
-
     }
 }
 export default CheckboxField

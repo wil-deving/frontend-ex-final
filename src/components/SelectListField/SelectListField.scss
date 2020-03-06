@@ -1,0 +1,45 @@
+$primaryColor: #4f81c7;
+$darkColor: #272727;
+
+.general-select {
+  margin: 15px 25px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.comp-select-def {
+  font-size: 100%;
+  font-family: 'Nunito', sans-serif;
+  border: $darkColor .5px solid;
+}
+
+.cont-tag-comp {
+  width: 100%;
+  height: 22px;
+  background: $primaryColor;
+  margin: 0;
+  padding: 2px 0px 0px 15px;
+  -webkit-border-top-left-radius: 3px;
+  -moz-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  box-sizing: border-box;
+}
+
+.cont-select-ops {
+  width: 100%;
+  height: 28px;
+  background: blue;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.select-comp {
+  width: 100%;
+  height: inherit;
+  margin: 0;
+  padding: 0px 0px 0px 15px;
+}
