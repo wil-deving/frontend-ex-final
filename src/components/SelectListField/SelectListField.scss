@@ -13,9 +13,13 @@ $darkColor: #272727;
   border: $darkColor .5px solid;
 }
 
+.lbl-tag-comp-select {
+  color: white;
+}
+
 .cont-tag-comp {
   width: 100%;
-  height: 22px;
+  height: 30px;
   background: $primaryColor;
   margin: 0;
   padding: 2px 0px 0px 15px;

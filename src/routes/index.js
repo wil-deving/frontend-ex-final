@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom'
 import Error404 from './Error404/Error404.js'
 import routes from './routes.js'
+import MenuBar from './../components/MenuBar/MenuBar.js'
 
 class App extends Component {
 
@@ -24,22 +25,30 @@ class App extends Component {
 
     render () {
         // console.log('RenderApp', this, window, window.ConfigApp, routes)
+        // console.log('resolution', window.screen.width)
+        // console.log('resolution', window.screen.height)
+        var topToMenu = '60px'
+        if (window.screen.width <= 480) {
+            topToMenu = '120px'
+        }
+
         return (
-            <HashRouter>
-                <div>
-                    <main>
-                        <Link to="/"><span>Home</span></Link>
-                        <Link to="/test"><span>Test</span></Link>
+            <div>
+                 <header>
+                     <MenuBar />
+                 </header>
+                <HashRouter>
+                    <main style={{margin: topToMenu + ' 1% 20px 1%'}}>
                         <Suspense fallback={this.loading()}>
                             <Switch>
                                 {
                                     routes.map((route, idRoute) => {
                                         return route.component ? (
                                             <Route key={idRoute}
-                                                exact path={route.path}
-                                                exact component={route.component} />
+                                                   exact path={route.path}
+                                                   exact component={route.component} />
                                         )
-                                        : (null)
+                                            : (null)
                                     })
                                 }
                                 <Route component={Error404} />
@@ -47,8 +56,8 @@ class App extends Component {
                         </Suspense>
 
                     </main>
-                </div>
-            </HashRouter>
+                </HashRouter>
+            </div>
         )
     }
 }

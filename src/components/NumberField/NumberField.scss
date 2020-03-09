@@ -2,71 +2,61 @@ $darkColor: #272727;
 $dangerColor: #ef4b4b;
 $primaryColor: #4f81c7;
 
-.general-text {
+.general-number {
   display: block;
   margin: 15px 25px;
   padding: 0px;
 }
 
-.general-comp {
+.general-comp-num {
   font-family: 'Nunito', sans-serif;
   color: $darkColor;
   padding: 5px 10px;
 }
 
-.general-label {
+.general-number-num {
   font-size: 100%;
   display: block;
   box-sizing: border-box;
 }
 
-.general-label:hover {
+.general-label-num {
+  display: block;
+}
+
+.general-label-num:hover {
   color: $primaryColor;
 }
 
-.general-textfield {
-  display: block;
-  width: 100%;
+.general-number-field {
+  display: inline-block;
+  width: 60%;
   height: 22px;
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
   border-radius: 1px;
   font-size: 75%;
   box-sizing: border-box;
+  margin-right: 10px;
 }
 
-.general-textfield:hover {
+.general-number-field:hover {
   border-bottom-width: 1px;
   border-bottom-color: $primaryColor;
 }
 
-.general-textfield:focus {
+.general-number-field:focus {
   border-bottom-width: 2px;
   border-bottom-color: $primaryColor;
 }
 
-.cont-required {
-  text-align: right;
-}
-
-#req {
-  font-family: 'Nunito', sans-serif;
-  color: $dangerColor;
-  font-size: 50%;
-  margin: 3px 10px 1px 1px;
-}
-
-.border-text {
+.border-num {
   border-left-width: 0px;
   border-right-width: 0px;
   border-top-width: 0px;
   border-bottom-width: 1px;
 }
 
-.is-req {
-  border-bottom-color: $dangerColor;
-}
-
-.no-req {
-  border-bottom-color: $darkColor;
+#t-val {
+  width: 30%;
 }

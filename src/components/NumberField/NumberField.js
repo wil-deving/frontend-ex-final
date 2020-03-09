@@ -1,11 +1,11 @@
 /**
- * Created by Williams on 18/2/2020.
+ * Created by Williams on 9/3/2020.
  */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 //Seccion que importa los estilos del componente
-import './TextField.scss'
+import './NumberField.scss'
 
 class MiComponente extends Component {
 
@@ -15,8 +15,8 @@ class MiComponente extends Component {
      * tagComponent-> string que muestra el texto que sobre el campo (label)
      * enabled-> bool que habilita o no el componente
      * value-> valor que pondra en user
-     * isRequired-> tipo de entrada para los estilos (obligatorio o no)
-     * placeholder-> prop que se pondra en el campo para que empiece
+     * defaultValue-> valor numerico con el cual iniciara el componente
+     * tagValue->string que dira que queremos cuantificar (c.c., autos ,personas, etc)
      * */
 
     static propTypes = {
@@ -26,12 +26,9 @@ class MiComponente extends Component {
             PropTypes.string,
             PropTypes.number
         ]),
-        placeholder: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number
-        ]),
-        isRequired: PropTypes.bool,
-        enabled: PropTypes.bool
+        enabled: PropTypes.bool,
+        defaultValue: PropTypes.number,
+        tagValue: PropTypes.string
     }
 
     constructor(props){
@@ -39,10 +36,10 @@ class MiComponente extends Component {
         this.state = {
             tagComponent: this.props.tagComponent,
             visible: this.props.visible,
-            value: this.props.value,
-            placeholder: this.props.placeholder,
-            isRequired: this.props.isRequired,
-            enabled: this.props.enabled
+            value: this.props.defaultValue,
+            enabled: this.props.enabled,
+            defaultValue: this.props.defaultValue,
+            tagValue: this.props.tagValue
         }
         // bindeo para funciones y metodos
         this.onChangeField = this.onChangeField.bind(this)
@@ -52,13 +49,13 @@ class MiComponente extends Component {
         tagComponent: '',
         visible: true,
         value: '',
-        placeholder: '',
-        isRequired: false,
-        enabled: true
+        enabled: true,
+        defaultValue: 1,
+        tagValue: ''
     }
 
     componentWillMount(){
-        //console.log('componentWillMountComponent')
+        // console.log('componentWillMountComponentNumberFiled', this)
     }
 
     componentDidMount(){
@@ -94,51 +91,34 @@ class MiComponente extends Component {
     }
 
     onChangeField () {
-        // console.log('onChangeField', this.props.idField)
+        // console.log('onChangeField', this.props)
         let valor = document.getElementById(this.props.idField).value
-         console.log('CambioTextField', valor)
+        console.log('CambioNumberField', valor)
         this.setState({ value: valor })
-        //console.log('VVVVVV', this.state.value)
-        if (valor !== '') {
-            // console.log('con datos')
-            this.setState({ isRequired: false })
-        } else {
-            // console.log('vacio', this.props.isRequired)
-            if (this.props.isRequired) {
-                this.setState({ isRequired: true })
-            }
-        }
-
     }
 
     render () {
-        let req = (this.state.isRequired) ? 'is-req' : 'no-req'
-
-        return (
-            <div hidden={!this.state.visible} className="general-text" >
+        // console.log('renderComponentNumberField', this)
+        return(
+            <div hidden={!this.state.visible} className="general-number" >
                 {
                     (this.props.tagComponent !== '')
-                    ?
-                        <label htmlFor={this.props.idField} className={'general-comp general-label'}>
+                        ?
+                        <label htmlFor={this.props.idField} className={'general-comp-num general-label-num'}>
                             {this.props.tagComponent}
                         </label>
-                    : null
+                        : null
                 }
 
-                <input className={this.state.type + ' general-comp general-textfield ' + req + ' border-text'}
+                <input className={' general-comp-num general-number-field border-num'}
                     id={this.props.idField}
-                    type="text"
+                    type="number"
+                    defaultValue={this.props.defaultValue}
                     placeholder={this.props.placeholder}
                     disabled={!this.state.enabled}
                     onChange={this.onChangeField} />
+                <span id="t-val">{this.props.tagValue}</span>
 
-                {
-                    (this.state.isRequired)
-                    ? <div className="cont-required">
-                        <span id="req" >Obligatorio</span>
-                      </div>
-                    : null
-                }
 
             </div>
         )
