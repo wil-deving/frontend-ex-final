@@ -3,7 +3,7 @@
  */
 
 const protocol = 'http'
-const host = 'localhost'
+const host = '192.168.0.105'
 const port = '80'
 const nameBackSQL = 'ShopCar'
 const nameServiceSQlForData = 'ForDataQuery'

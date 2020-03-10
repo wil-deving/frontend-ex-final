@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 //Seccion que importa los estilos del componente
 import './TextField.scss'
 
-class MiComponente extends Component {
+class TextField extends Component {
 
     /*TODO estados y propiedades del componente*/
     /*
@@ -144,4 +144,4 @@ class MiComponente extends Component {
         )
     }
 }
-export default MiComponente
+export default TextField
