@@ -66,6 +66,10 @@ class SelectListField extends Component {
 
     componentWillMount(){
         //console.log('componentWillMountComponent')
+        if (this.state.defaultSelected !== null && this.state.defaultSelected !== undefined &&
+            this.state.defaultSelected !== '') {
+            this.setState({ value: this.state.defaultSelected })
+        }
     }
 
     componentDidMount(){
@@ -146,9 +150,6 @@ class SelectListField extends Component {
 
     render () {
         // console.log('renderComponent')
-        let ss = [
-            { value: 'idUno', name: 'idUno', tag: 'Opcion Uno' }
-        ]
         return(
             <div hidden={!this.state.visible} className="general-select">
                 <div className="cont-tag-comp comp-select-def">
@@ -156,7 +157,7 @@ class SelectListField extends Component {
                 </div>
                 <div className="cont-select-ops">
                     <select id="selectBox" className="select-comp comp-select-def"
-                        defaultValue={this.state.defaultSelected}
+                        value={this.state.value}
                         onChange={this.onSelectedOption}
                         disabled={!this.state.enabled} >
                         {this.armarOptions()}

@@ -2,17 +2,46 @@
  * Created by Williams on 3/3/2020.
  */
 let EntitiesView = {
-    Horarios: {
-        Dias: {
-            tagComponent: 'Seleccione los dias en que se aplicara los horarios',
-            daysList: [
-                { tag: 'Lunes', value: 'Lunes', activo: true },
-                { tag: 'Martes', value: 'Martes' },
-                { tag: 'Miercoles', value: 'Miercoles' },
-                { tag: 'Jueves', value: 'Jueves' },
-                { tag: 'Viernes', value: 'Viernes' },
-                { tag: 'Sabado', value: 'Sabado' }
-            ]
+    SeccionMarcas: {
+        TituloSeccion: 'Seccion Marcas',
+        listaMarcas: {
+            tagComponent: 'Seleccione una marca',
+            optionsList: []
+        },
+        NombreMarca: {
+            tagComponent: 'Nombre',
+            placeholder: 'Nombre...',
+            isRequired: true
+        },
+        Capacidad: {
+            tagComponent: 'Capacidad',
+            tagValue: 'personas',
+            defaultValue: 5
+        },
+        Motor: {
+            tagComponent: 'Motor',
+            placeholder: 'Motor...',
+            isRequired: true
+        },
+        Cilindrada: {
+            tagComponent: 'Cilindrada',
+            tagValue: 'c.c.',
+            defaultValue: 1500
+        },
+        btnGuardar: {
+            texto: 'Guardar',
+            type: 'primary'
+        },
+        btnCancelar: {
+            texto: 'Cancelar',
+            type: 'danger'
+        },
+        tableSubMarcas: {
+            tagComponent: 'Lista de marcas y modelos',
+            head: [
+                'Id Marca', 'Nombre marca', 'Nombre modelo', '# pasajeros', 'Cilindrada'
+            ],
+            data: []
         }
     }
 }

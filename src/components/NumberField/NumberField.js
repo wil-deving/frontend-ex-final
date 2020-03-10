@@ -113,7 +113,7 @@ class MiComponente extends Component {
                 <input className={' general-comp-num general-number-field border-num'}
                     id={this.props.idField}
                     type="number"
-                    defaultValue={this.props.defaultValue}
+                    value={this.state.value}
                     placeholder={this.props.placeholder}
                     disabled={!this.state.enabled}
                     onChange={this.onChangeField} />

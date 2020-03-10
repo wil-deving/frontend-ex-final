@@ -96,7 +96,7 @@ class TextField extends Component {
     onChangeField () {
         // console.log('onChangeField', this.props.idField)
         let valor = document.getElementById(this.props.idField).value
-         console.log('CambioTextField', valor)
+        // console.log('CambioTextField', valor)
         this.setState({ value: valor })
         //console.log('VVVVVV', this.state.value)
         if (valor !== '') {
@@ -128,6 +128,7 @@ class TextField extends Component {
                 <input className={this.state.type + ' general-comp general-textfield ' + req + ' border-text'}
                     id={this.props.idField}
                     type="text"
+                    value={this.state.value}
                     placeholder={this.props.placeholder}
                     disabled={!this.state.enabled}
                     onChange={this.onChangeField} />
