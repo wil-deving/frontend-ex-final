@@ -93,7 +93,7 @@ class MiComponente extends Component {
     onChangeField () {
         // console.log('onChangeField', this.props)
         let valor = document.getElementById(this.props.idField).value
-        console.log('CambioNumberField', valor)
+        // console.log('CambioNumberField', valor)
         this.setState({ value: valor })
     }
 

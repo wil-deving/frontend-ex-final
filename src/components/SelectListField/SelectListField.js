@@ -11,6 +11,8 @@ class SelectListField extends Component {
 
     /*TODO estados y propiedades del componente*/
     /*
+    * idField-> identificador unico para el componente, corrige cuando hay varios de este
+    * componente en un mismo view
     * visible-> bool que muestra u oculta el componente
     * tagComponent-> string que muestra el texto etiqueta del componente (lista de utiles)
     * enabled-> bool que habilita o no el componente
@@ -139,7 +141,7 @@ class SelectListField extends Component {
     }
 
     onSelectedOption() {
-        var selectBox = document.getElementById("selectBox")
+        var selectBox = document.getElementById(this.props.idField)
         var selectedValue = selectBox.options[selectBox.selectedIndex].value
         // console.log('onSelectedOption', selectedValue)
         if (this.state.onClickOption !== undefined && this.state.onClickOption !== null) {
@@ -156,7 +158,7 @@ class SelectListField extends Component {
                     <label className="lbl-tag-comp-select">{this.props.tagComponent}</label>
                 </div>
                 <div className="cont-select-ops">
-                    <select id="selectBox" className="select-comp comp-select-def"
+                    <select id={this.props.idField} className="select-comp comp-select-def"
                         value={this.state.value}
                         onChange={this.onSelectedOption}
                         disabled={!this.state.enabled} >

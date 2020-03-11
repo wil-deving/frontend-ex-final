@@ -87,7 +87,9 @@ class View extends Component {
             } else {
                 // dar mensaje de fallo
                 self.refs.listMarks.setState({ optionsList: [] })
-                alertify.error(pRespMarcasController.Mensaje)
+                alertify.alert('AUTO TIENDA', pRespMarcasController.Mensaje, function(){
+                    alertify.message('Error en peticion a la base de datos');
+                })
             }
         })
     }
@@ -142,7 +144,7 @@ class View extends Component {
                         }
                     })
                 },
-                function(){ alertify.error('Cancelo')});
+                function(){ alertify.error('Cancelo guardar')});
         } else {
             // lanzar alerta
             alertify.warning(validador.mensaje)
@@ -185,6 +187,7 @@ class View extends Component {
                 <div className="row">
                     <div className="col-md-4">
                         <SelectListField ref={'listMarks'}
+                            idField={'listMarks'}
                             optionsList={EntityView.listaMarcas.optionsList}
                             tagComponent={EntityView.listaMarcas.tagComponent} />
 
@@ -223,7 +226,6 @@ class View extends Component {
                                 <ButtonField ref={'btnCancelar'}
                                     type={EntityView.btnCancelar.type}
                                     texto={EntityView.btnCancelar.texto}
-                                    texto={'Cancelar'}
                                     onClick={() => this.vaciarCampos(true)} />
                             </div>
                         </div>
