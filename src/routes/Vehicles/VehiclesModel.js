@@ -1,14 +1,17 @@
 /**
  * Created by Williams on 8/3/2020.
  */
+import { obtenerFechaHoraActual } from '../../services/GestorUtilitarios.js'
+
 export default class Model {
     constructor () {
 
     }
 
     insertarRegistroVehiculo (datos = null) {
+
         let consulta = ' INSERT INTO vehicle (id_vehicle, id_sub_trademark, color, precio_unitario, placa, ' +
-            ' chasis, anio) ' +
+            ' chasis, anio, img, fecha_creacion) ' +
             ' VALUES ( ' +
             `'` + datos.idVehicle + `', ` +
             `'` + datos.idSubMarca + `', ` +
@@ -16,7 +19,9 @@ export default class Model {
             datos.precioU + `, ` +
             `'` + datos.placa + `', ` +
             `'` + datos.chasis + `', ` +
-            datos.anio + ' ) '
+            datos.anio + `, ` +
+            `'` + 'HAC.png' + `', ` +
+            `'` + obtenerFechaHoraActual() + `'` + ' ) '
         return consulta
     }
 

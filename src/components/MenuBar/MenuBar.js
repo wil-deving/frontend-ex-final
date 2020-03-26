@@ -123,11 +123,7 @@ class MiComponente extends Component {
                                 <span><Link className="gen-item" to="/marcas">Nuestras Marcas</Link></span>
                             </li>
                             <li>
-                                <span className="gen-item">Ventas</span>
-                                <ul>
-                                    <li><Link className="gen-item" to="/">Nueva Venta</Link></li>
-                                    <li><Link className="gen-item" to="/">Ventas Hechas</Link></li>
-                                </ul>
+                                <span><Link className="gen-item" to="/">Ventas</Link></span>
                             </li>
                         </ul>
                     </nav>

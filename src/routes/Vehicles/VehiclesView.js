@@ -18,6 +18,7 @@ import TextField from './../../components/TextField/TextField.js'
 import NumberField from './../../components/NumberField/NumberField.js'
 import ButtonField from './../../components/ButtonField/ButtonField.js'
 import TableField from './../../components/TableField/TableField.js'
+import FileImgField from './../../components/FileImgFiled/FileImgField.js'
 
 //Seccion para importar la funcion que retorna la entidad del view
 import { obtenerEntidadForView } from './../../data/EntitiesView.js'
@@ -120,6 +121,8 @@ class View extends Component {
 
     guardarVehiculo () {
         console.log('guardarMarca', this.refs)
+
+
         let self = this
         let validador = self.validadorCampos()
         if (validador.correcto) {
@@ -159,6 +162,7 @@ class View extends Component {
         self.refs.placa.setState({ value: '' })
         self.refs.chasis.setState({ value: '' })
         self.refs.anio.setState({ value: EntityView.AnioModelo.defaultValue })
+        // self.refs.imgVehicle.setState({ value: '' })
         if (actionButton) {
             alertify.warning('Se vaciaron los campos')
         }
@@ -218,6 +222,11 @@ class View extends Component {
                             defaultValue={EntityView.AnioModelo.defaultValue}
                             tagComponent={EntityView.AnioModelo.tagComponent}
                             tagValue={EntityView.AnioModelo.tagValue} />
+
+                        {/*
+                            <FileImgField ref={'imgVehicle'}
+                                tagComponent={'Seleccione una imagen de vehiculo'} />
+                        */}
 
                         <div className="row">
                             <div className="col-md-6">
