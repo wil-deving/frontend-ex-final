@@ -130,7 +130,7 @@ class TableField extends Component {
 
     armarCabecera () {
         // console.log('armarCabecera', this.props.head)
-        let forHead = this.props.head
+        let forHead = this.state.head
         if (this.state.forUpdate) {
             forHead.push('Editar')
         }

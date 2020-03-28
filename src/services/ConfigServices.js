@@ -8,6 +8,7 @@ const port = '80'
 const nameBackSQL = 'ShopCar'
 const nameServiceSQlForData = 'ForDataQuery'
 const nameServiceSQlABM = 'ABMQuery'
+const nameServiceReport = 'Reports/LinksReports'
 
 export function ConfigServicesSQl (typeQuery = 'select') {
     let nameServiceSQl = nameServiceSQlForData
@@ -21,4 +22,8 @@ export function ConfigServicesSQl (typeQuery = 'select') {
         nameService: nameBackSQL + '/' + nameServiceSQl + '/',
         timer: 60000
     }
+}
+
+export function ConfigServicesReports () {
+    return protocol + '://' + host + ':' + port + '/' + nameBackSQL + '/' + nameServiceReport + '/'
 }

@@ -99,6 +99,22 @@ let EntitiesView = {
             ],
             data: []
         }
+    },
+    SeccionCotizaciones: {
+        TituloSeccion: 'Seccion Cotizaciones',
+        TipoVenta: {
+            tagComponent: 'Filtrar tipo de cotizacion por:',
+            radiosList: [
+                { id: 'todos', tag: 'Todos', value: 'todos', group: 'tipoQuote', activo: true },
+                { id: 'credito', tag: 'Credito', value: 'credito', group: 'tipoQuote' },
+                { id: 'contado', tag: 'Contado', value: 'contado', group: 'tipoQuote' }
+            ]
+        },
+        TableQuotes: {
+            tagComponent: 'Lista de cotizaciones',
+            head: ['Nombre Marca', 'Nombre Modelo', 'A\u00F1o', 'Precio'],
+            data: []
+        }
     }
 }
 
