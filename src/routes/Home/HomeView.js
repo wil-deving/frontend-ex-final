@@ -58,10 +58,18 @@ class View extends Component {
     }
 
     render () {
-        //console.log('renderView', this)
+        console.log('renderView', this, window.screen.width)
+        console.log('renderView', this, window.screen.height)
+        let ancho = window.screen.width + 200
+        let alto = window.screen.height
+
         return (
-            <div>
-                View Home
+            <div className="cont-inicio" >
+                <img
+                    src="FondoInicioUno.jpg"
+                    alt="Fondo Auto Tienda"
+                    width={ancho}
+                    height={alto} />
             </div>
         )
     }

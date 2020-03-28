@@ -37,8 +37,12 @@ export function ConfigServicesSQl (typeQuery = 'select') {
 }
 
 export function ConfigServicesReports () {
+    if (PUBLICA) {
+        protocol = protocolCloud
+        host = hostCloud
+    }
     let URLReturn = (PUBLICA)
-        ? protocol + '://' + host + '/' + nameBackSQL + '/' + nameServiceReport + '/'
+        ? protocol + '://' + host + '/' + nameServiceReport + '/'
         : protocol + '://' + host + ':' + port + '/' + nameBackSQL + '/' + nameServiceReport + '/'
     return URLReturn
 }
