@@ -78,11 +78,10 @@ export default class GestorServices {
         })
     }
 
+    // Funcion que arma la URL del backend que se consumira
     buildUrlServiceSQL (type = 'select') {
         let configServicesSQl = ConfigServicesSQl(type)
-        return configServicesSQl.protocol + '://' + configServicesSQl.host + ':' + configServicesSQl.port +
-            '/' + configServicesSQl.nameService
+        return configServicesSQl.URL
     }
-
 
 }

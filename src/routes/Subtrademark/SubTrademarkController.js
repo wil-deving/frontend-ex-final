@@ -7,7 +7,7 @@ import Model from './SubTrademarkModel.js'
 var uuid = require('uuid')
 
 export function GUARDAR (data = null) {
-    console.log('GUARDARCONTROLLER', data)
+    // console.log('GUARDARCONTROLLER', data)
     let gestorServices = new GestorServices()
     let Modelo = new Model()
     data.idSubMark = uuid.v4()

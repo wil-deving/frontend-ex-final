@@ -15,7 +15,7 @@ export function GUARDAR (datos = null) {
     return new Promise((resolve, reject) => {
         gestorServices.ExecuteSimpleQuery(insertQuery, 'insertar')
             .then((pRespSaveVehicleDB) => {
-                console.log('pRespSaveVehicleDB', pRespSaveVehicleDB)
+                // console.log('pRespSaveVehicleDB', pRespSaveVehicleDB)
                 if (pRespSaveVehicleDB.correcto) {
                     resolve({
                         Correcto: true,

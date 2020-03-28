@@ -120,9 +120,7 @@ class View extends Component {
     }
 
     guardarVehiculo () {
-        console.log('guardarMarca', this.refs)
-
-
+        // console.log('guardarMarca', this.refs)
         let self = this
         let validador = self.validadorCampos()
         if (validador.correcto) {

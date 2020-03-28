@@ -20,7 +20,7 @@ export default class Model {
     }
 
     insertarRegistroMarca (data) {
-        console.log('insertarRegistroMarca', data)
+        // console.log('insertarRegistroMarca', data)
         data.marca = parseInt(data.marca)
         data.capacidad = parseInt(data.capacidad)
         data.cilindros = data.cilindros + 'c.c.'

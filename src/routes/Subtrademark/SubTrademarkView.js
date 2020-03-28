@@ -97,7 +97,7 @@ class View extends Component {
     obtenerSubmarcas () {
         let self = this
         ObtenerListaSubMarcas().then(function(pRespSTControl) {
-            console.log('pRespSTControl', pRespSTControl)
+            // console.log('pRespSTControl', pRespSTControl)
             if (pRespSTControl.Correcto) {
                 self.refs.tablaMarcas.setState({ data: pRespSTControl.listaResultado })
             } else {
