@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Proyecto en React, sobre una tienda de autos la cual se conecta a un backend que da servicios.
+
 ## Available Scripts
 
 In the project directory, you can run:
