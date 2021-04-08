@@ -14,19 +14,19 @@ export default class GestorServices {
 
     testingAjaxRequest () {
         let urlReq = this.buildUrlServiceSQL()
-        var parametros = { //cada parámetro se pasa con un nombre en un array asociativo
+        var parametros = { //cada parï¿½metro se pasa con un nombre en un array asociativo
             "sql": 'SELECT * FROM vehicle'
         }
         return new Promise(function (resolve, reject) {
 
-            $.ajax({
+            /*$.ajax({
                 data: parametros,//los parametros se pasan poresta variable
                 url: urlReq,
                 type: 'post',
                 beforeSend: function () {//elemento que queramos poner mientras ajax carga
                     //$("#resultado").html("Procesando, espere por favor...");
                 },
-                success: function (response) {//resultado de la función
+                success: function (response) {//resultado de la funciï¿½n
                     //$("#resultado").html(response);
                     console.log('WWWW', response)
                     resolve({
@@ -41,25 +41,25 @@ export default class GestorServices {
                 complete : function(xhr, status) {
                     console.log('Se hizo la peticion para bien o para mal', xhr, 'State: ', status)
                 }
-            });
+            });*/
         })
     }
 
     ExecuteSimpleQuery (Consulta = '', type = 'select') {
         let urlReq = this.buildUrlServiceSQL(type)
-        var parametros = { //cada parámetro se pasa con un nombre en un array asociativo
+        var parametros = { //cada parï¿½metro se pasa con un nombre en un array asociativo
             "sql": Consulta
         }
         return new Promise(function (resolve, reject) {
 
-            $.ajax({
+           /* $.ajax({
                 data: parametros,//los parametros se pasan poresta variable
                 url: urlReq,
                 type: 'post',
                 beforeSend: function () {
                     //elemento que queramos poner mientras ajax carga
                 },
-                success: function (response) {//resultado de la función
+                success: function (response) {//resultado de la funciï¿½n
                     // Esta parte se ejecuta si se hizo una correcta perticion a l back, y
                     // valida asi el funcionamiento correcto del back
                     // console.log('RespAjax', response)
@@ -74,14 +74,14 @@ export default class GestorServices {
                     // respuesta a la peticion.
                     // console.log('Se hizo la peticion para bien o para mal', xhr, 'State: ', status)
                 }
-            });
+            });*/
         })
     }
 
     // Funcion que arma la URL del backend que se consumira
     buildUrlServiceSQL (type = 'select') {
-        let configServicesSQl = ConfigServicesSQl(type)
-        return configServicesSQl.URL
+        //let configServicesSQl = ConfigServicesSQl(type)
+        //return configServicesSQl.URL
     }
 
 }

@@ -65,11 +65,7 @@ class View extends Component {
 
         return (
             <div className="cont-inicio" >
-                <img
-                    src="FondoInicioUno.jpg"
-                    alt="Fondo Auto Tienda"
-                    width={ancho}
-                    height={alto} />
+                
             </div>
         )
     }

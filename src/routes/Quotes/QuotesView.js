@@ -20,7 +20,7 @@ import TableField from './../../components/TableField/TableField.js'
 
 //Seccion para importar la funcion que retorna la entidad del view
 import { obtenerEntidadForView } from './../../data/EntitiesView.js'
-import { ConfigServicesReports } from './../../services/ConfigServices.js'
+//import { ConfigServicesReports } from './../../services/ConfigServices.js'
 //constante que treara el objeto entidad para esta vista, para mandar a los props de los componentes
 const EntityView = obtenerEntidadForView('SeccionCotizaciones')
 
@@ -107,7 +107,7 @@ class View extends Component {
 
     render () {
         //console.log('renderView', this)
-        let urlReport = ConfigServicesReports() +
+        let urlReport = /*ConfigServicesReports()*/ +
             'CreatorQuotesReport.php?type=' +
             this.state.typeReport
         // console.log('urlReport', urlReport, this.state)
