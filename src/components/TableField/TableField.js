@@ -154,7 +154,6 @@ class TableField extends Component {
   }
 
   armarContenido() {
-    console.log("TTTT", this.state);
     return (
       <ContentTable
         identificadorUnico={this.state.identificador}

@@ -8,6 +8,7 @@ import Entity from "./Entity/";
 
 import Product from "./Product/";
 import Client from "./Client/";
+import Offer from "./Offer/";
 
 // Seccion que contruye el array para Router de REACT
 const routes = [
@@ -18,5 +19,6 @@ const routes = [
   // { path: '/quotes', component: Quotes },
   { path: "/products", component: Product },
   { path: "/clients", component: Client },
+  { path: "/offers", component: Offer },
 ];
 export default routes;

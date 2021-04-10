@@ -19,6 +19,7 @@ import TableField from "./../../components/TableField/TableField.js";
 class View extends Component {
   static propTypes = {
     costumerId: PropTypes.string,
+    peopleId: PropTypes.string,
     costumerName: PropTypes.string,
     costumerPaterno: PropTypes.string,
     costumerMaterno: PropTypes.string,
@@ -36,6 +37,7 @@ class View extends Component {
     super(props);
     this.state = {
       costumerId: this.props.costumerId,
+      peopleId: this.props.peopleId,
       costumerName: this.props.clientName,
       costumerPaterno: this.props.clientPaterno,
       costumerMaterno: this.props.clientMaterno,
@@ -56,6 +58,7 @@ class View extends Component {
 
   static defaultProps = {
     costumerId: "",
+    peopleId: "",
     costumerName: "",
     costumerPaterno: "",
     costumerMaterno: "",
@@ -89,6 +92,7 @@ class View extends Component {
       () => {
         const dataToSave = {
           costumerId: this.state.costumerId,
+          peopleId: this.state.peopleId,
           name: this.state.costumerName,
           aPaterno: this.state.costumerPaterno,
           aMaterno: this.state.costumerMaterno,
@@ -132,6 +136,7 @@ class View extends Component {
             const productData = respData.body;
             this.setState({
               costumerId: productData.costumerId,
+              peopleId: productData.peopleId,
               costumerName: productData.name,
               costumerPaterno: productData.apaterno,
               costumerMaterno: productData.amaterno,

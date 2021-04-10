@@ -147,12 +147,14 @@ class ContentTable extends Component {
             </div>
           </td>
         );
-      } else {
+      } else if (itemL[this.state.headOrderTable[orderFromHead]]) {
         const columnData = (
           <td key={numC}>{itemL[this.state.headOrderTable[orderFromHead]]}</td>
         );
         orderFromHead++;
         return columnData;
+      } else {
+        return null;
       }
     });
     return cont;

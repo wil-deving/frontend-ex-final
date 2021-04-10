@@ -4,7 +4,7 @@ var uuid = require("uuid");
 
 export async function save(data = {}) {
   data.costumerId = uuid.v4();
-  console.log("UUUWWWW", data);
+  data.peopleId = uuid.v4();
   try {
     const response = await fetch(`${API_SERVICES}/v1/costumer`, {
       method: "POST",

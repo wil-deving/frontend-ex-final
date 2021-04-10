@@ -115,9 +115,6 @@ class TextField extends Component {
 
   render() {
     let req = this.state.isRequired ? "is-req" : "no-req";
-
-    console.log("OOOOO", this.state);
-
     return (
       <div hidden={!this.state.visible} className="general-text">
         {this.props.tagComponent !== "" ? (
