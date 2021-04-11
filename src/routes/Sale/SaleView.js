@@ -89,7 +89,7 @@ class View extends Component {
   getAllSalesListView() {
     getAllSalesList().then((resp) => {
       if (resp.status === 200) {
-        this.setState({ salesList: resp.body });
+        this.setState({ salesList: resp.responseView });
       } else console.log("Error");
     });
   }
@@ -219,7 +219,7 @@ class View extends Component {
     } = this.state;
     return (
       <div>
-        <TitleSectionField texto={"Administrador de Bienes en oferta"} />
+        <TitleSectionField texto={"Administrador de Venta de Bienes"} />
         <div className="row">
           <div className="col-md-4">
             <SelectListField

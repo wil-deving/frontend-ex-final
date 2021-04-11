@@ -60,7 +60,7 @@ export async function getAllSalesList() {
     });
     const body = await response.json();
     const responseView = formatDataReceived(body);
-    return { status: response.status, body };
+    return { status: response.status, responseView };
   } catch (error) {
     console.log("Error: ", error);
   }
@@ -70,4 +70,5 @@ const formatDataReceived = (data = []) =>
   data.map((item) => {
     item.offerDate = item.offerDate.substring(0, 10);
     item.saleDate = item.saleDate.substring(0, 10);
+    return item;
   });
