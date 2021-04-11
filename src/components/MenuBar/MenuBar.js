@@ -140,6 +140,13 @@ class MiComponente extends Component {
                   </Link>
                 </span>
               </li>
+              <li>
+                <span>
+                  <Link className="gen-item" to="/sales">
+                    Ventas
+                  </Link>
+                </span>
+              </li>
             </ul>
           </nav>
         </HashRouter>

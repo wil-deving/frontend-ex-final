@@ -273,7 +273,7 @@ class View extends Component {
           <div className="col-md-4">
             <SelectListField
               visible={showProductList}
-              idField={"client"}
+              idField={"folio"}
               optionsList={productList}
               tagComponent="Seleccione el Bien Inmueble por código de Folio"
               value={this.state.productSelected}
@@ -282,7 +282,7 @@ class View extends Component {
               }
             />
             <SelectListField
-              idField={"folio"}
+              idField={"client"}
               optionsList={costumerList}
               tagComponent="Seleccione el Cliente"
               value={this.state.costumerSelected}
