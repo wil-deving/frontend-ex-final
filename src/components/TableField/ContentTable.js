@@ -147,15 +147,24 @@ class ContentTable extends Component {
             </div>
           </td>
         );
-      } else if (itemL[this.state.headOrderTable[orderFromHead]]) {
+      } else if (
+        itemL[this.state.headOrderTable[orderFromHead]] ||
+        itemL[this.state.headOrderTable[orderFromHead]] === 0
+      ) {
         const columnData = (
           <td key={numC}>{itemL[this.state.headOrderTable[orderFromHead]]}</td>
         );
         orderFromHead++;
         return columnData;
-      } else {
+      } else if (
+        itemL[this.state.headOrderTable[orderFromHead]] === null ||
+        itemL[this.state.headOrderTable[orderFromHead]] === ""
+      ) {
+        const columnData = <td key={numC}>{" - "}</td>;
+        orderFromHead++;
+        return columnData;
+      } else if (itemL[this.state.headOrderTable[orderFromHead]] === undefined)
         return null;
-      }
     });
     return cont;
   }

@@ -60,6 +60,8 @@ class View extends Component {
     this.saveProduct = this.saveProduct.bind(this);
     this.getProductDataView = this.getProductDataView.bind(this);
     this.vaciarCampos = this.vaciarCampos.bind(this);
+    this.validateFields = this.validateFields.bind(this);
+    this.validateEachField = this.validateEachField.bind(this);
   }
 
   static defaultProps = {
@@ -95,45 +97,106 @@ class View extends Component {
     });
   }
 
-  saveProduct() {
-    alertify.confirm(
-      "Demo PROGRAMACION 3 dice",
-      `Está seguro de ${this.state.actionForm}?`,
-      () => {
-        const dataToSave = {
-          idProduct: this.state.idProduct,
-          idProductType: Number(this.state.productTypeSelected),
-          city: this.state.productCity,
-          address: this.state.productAddress,
-          codeFolio: this.state.productFolio,
-          codeCatastro: this.state.productCatastro,
-          price: Number(this.state.productPrice),
-          surface: Number(this.state.productSurface),
-          buildedSurface: Number(this.state.productBuildedSurface),
-        };
+  validateFields() {
+    const {
+      productTypeSelected,
+      productCity,
+      productAddress,
+      productFolio,
+      productCatastro,
+      productPrice,
+      productSurface,
+      productBuildedSurface,
+    } = this.state;
 
-        if (this.state.actionForm === "Guardar") {
-          save(dataToSave)
-            .then((response) => {
-              if (response.status === 200) this.getProductListView();
-              else console.log("Error:");
-            })
-            .catch((error) => {
-              console.log("Error:", error);
-            });
-        } else if (this.state.actionForm === "Editar") {
-          update(dataToSave)
-            .then((response) => {
-              if (response.status === 200) this.getProductListView();
-              else console.log("Error:");
-            })
-            .catch((error) => {
-              console.log("Error:", error);
-            });
-        }
-      },
-      () => alertify.error("Cancelo Acción ")
-    );
+    if (!this.validateEachField(productTypeSelected, "string")) {
+      alertify.warning("Seleccione un Tipo de Bien");
+      return false;
+    }
+    if (!this.validateEachField(productCity, "string")) {
+      alertify.warning("Seleccione la Ciudad del Bien");
+      return false;
+    }
+    if (!this.validateEachField(productAddress, "string")) {
+      alertify.warning("Debe llenar la Dirección");
+      return false;
+    }
+    if (!this.validateEachField(productFolio, "string")) {
+      alertify.warning("Debe llenar el Código de Folio");
+      return false;
+    }
+    if (!this.validateEachField(productCatastro, "string")) {
+      alertify.warning("Debe llenar el Código Catastral");
+      return false;
+    }
+    if (!this.validateEachField(productPrice, "number")) {
+      alertify.warning(
+        "Debe llenar el Precio de la propiedad con un valor mayor a 0"
+      );
+      return false;
+    }
+    if (!this.validateEachField(productSurface, "number")) {
+      alertify.warning("Debe llenar la Superficie de la Propiedad");
+      return false;
+    }
+    if (!this.validateEachField(productBuildedSurface, "string")) {
+      alertify.warning("El campo Superficie Construida no debe estar vacío");
+      return false;
+    }
+    return true;
+  }
+
+  validateEachField(field, type) {
+    if (type === "number") {
+      if (field === "" || field === null || field === undefined || field <= 0)
+        return false;
+    } else if (type === "string") {
+      if (field === "" || field === null || field === undefined) return false;
+    }
+    return true;
+  }
+
+  saveProduct() {
+    if (this.validateFields()) {
+      alertify.confirm(
+        "Demo PROGRAMACION 3 dice",
+        `Está seguro de ${this.state.actionForm}?`,
+        () => {
+          const dataToSave = {
+            idProduct: this.state.idProduct,
+            idProductType: Number(this.state.productTypeSelected),
+            city: this.state.productCity,
+            address: this.state.productAddress,
+            codeFolio: this.state.productFolio,
+            codeCatastro: this.state.productCatastro,
+            price: Number(this.state.productPrice),
+            surface: Number(this.state.productSurface),
+            buildedSurface: Number(this.state.productBuildedSurface),
+          };
+
+          if (this.state.actionForm === "Guardar") {
+            save(dataToSave)
+              .then((response) => {
+                if (response.status === 200) this.getProductListView();
+                else console.log("Error:");
+              })
+              .catch((error) => {
+                console.log("Error:", error);
+              });
+          } else if (this.state.actionForm === "Editar") {
+            update(dataToSave)
+              .then((response) => {
+                if (response.status === 200) this.getProductListView();
+                else console.log("Error:");
+              })
+              .catch((error) => {
+                console.log("Error:", error);
+              });
+          }
+        },
+        () => alertify.error("Cancelo Acción ")
+      );
+    }
   }
 
   getProductDataView(idProduct = "", action = "") {
@@ -235,7 +298,7 @@ class View extends Component {
             <SelectListField
               idField={"productTypes"}
               optionsList={productTypeList}
-              tagComponent="Seleccione el tipo de Producto"
+              tagComponent="Seleccione el tipo de Bien"
               value={this.state.productTypeSelected}
               onClickOption={(value) =>
                 this.setState({ productTypeSelected: value })

@@ -54,6 +54,8 @@ class View extends Component {
     this.saveCostumer = this.saveCostumer.bind(this);
     this.getCostumerDataView = this.getCostumerDataView.bind(this);
     this.vaciarCampos = this.vaciarCampos.bind(this);
+    this.validateFields = this.validateFields.bind(this);
+    this.validateEachField = this.validateEachField.bind(this);
   }
 
   static defaultProps = {
@@ -85,47 +87,86 @@ class View extends Component {
     });
   }
 
-  saveCostumer() {
-    alertify.confirm(
-      "Demo PROGRAMACION 3 dice",
-      `Está seguro de ${this.state.actionForm}?`,
-      () => {
-        const dataToSave = {
-          costumerId: this.state.costumerId,
-          peopleId: this.state.peopleId,
-          name: this.state.costumerName,
-          aPaterno: this.state.costumerPaterno,
-          aMaterno: this.state.costumerMaterno,
-          document: this.state.costumerDocumento,
-          expDocument: this.state.costumerExpDoc,
-          address: this.state.costumerAddress,
-          phone: this.state.costumerPhone,
-          cellphone: this.state.costumerCellphone,
-          email: this.state.costumerEmail,
-        };
+  validateFields() {
+    const {
+      costumerName,
+      costumerDocumento,
+      costumerAddress,
+      costumerCellphone,
+    } = this.state;
 
-        if (this.state.actionForm === "Guardar") {
-          save(dataToSave)
-            .then((response) => {
-              if (response.status === 200) this.getCostumerListView();
-              else console.log("Error:");
-            })
-            .catch((error) => {
-              console.log("Error:", error);
-            });
-        } else if (this.state.actionForm === "Editar") {
-          update(dataToSave)
-            .then((response) => {
-              if (response.status === 200) this.getCostumerListView();
-              else console.log("Error:");
-            })
-            .catch((error) => {
-              console.log("Error:", error);
-            });
-        }
-      },
-      () => alertify.error("Cancelo Acción ")
-    );
+    if (!this.validateEachField(costumerName, "string")) {
+      alertify.warning("Debe Llenar el campo Nombres");
+      return false;
+    }
+    if (!this.validateEachField(costumerDocumento, "string")) {
+      alertify.warning("Debe Llenar el campo de Cédula o NIT");
+      return false;
+    }
+    if (!this.validateEachField(costumerAddress, "string")) {
+      alertify.warning("Debe llenar la Dirección");
+      return false;
+    }
+    if (!this.validateEachField(costumerCellphone, "string")) {
+      alertify.warning("Debe llenar el campo Celular");
+      return false;
+    }
+    return true;
+  }
+
+  validateEachField(field, type) {
+    if (type === "number") {
+      if (field === "" || field === null || field === undefined || field <= 0)
+        return false;
+    } else if (type === "string") {
+      if (field === "" || field === null || field === undefined) return false;
+    }
+    return true;
+  }
+
+  saveCostumer() {
+    if (this.validateFields()) {
+      alertify.confirm(
+        "Demo PROGRAMACION 3 dice",
+        `Está seguro de ${this.state.actionForm}?`,
+        () => {
+          const dataToSave = {
+            costumerId: this.state.costumerId,
+            peopleId: this.state.peopleId,
+            name: this.state.costumerName,
+            aPaterno: this.state.costumerPaterno,
+            aMaterno: this.state.costumerMaterno,
+            document: this.state.costumerDocumento,
+            expDocument: this.state.costumerExpDoc,
+            address: this.state.costumerAddress,
+            phone: this.state.costumerPhone,
+            cellphone: this.state.costumerCellphone,
+            email: this.state.costumerEmail,
+          };
+
+          if (this.state.actionForm === "Guardar") {
+            save(dataToSave)
+              .then((response) => {
+                if (response.status === 200) this.getCostumerListView();
+                else console.log("Error:");
+              })
+              .catch((error) => {
+                console.log("Error:", error);
+              });
+          } else if (this.state.actionForm === "Editar") {
+            update(dataToSave)
+              .then((response) => {
+                if (response.status === 200) this.getCostumerListView();
+                else console.log("Error:");
+              })
+              .catch((error) => {
+                console.log("Error:", error);
+              });
+          }
+        },
+        () => alertify.error("Cancelo Acción ")
+      );
+    }
   }
 
   getCostumerDataView(idCostumer = "", action = "") {
