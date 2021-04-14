@@ -123,15 +123,17 @@ class View extends Component {
         </section>
 
         <div id="footerpagina">
-          <div class="contenedor">
-            <div class="mod-pie-pag pie-pag-izq">
-              <span class="pie-nombre-marca">Demo Sistema de Inmobiliaria</span>
+          <div className="contenedor">
+            <div className="mod-pie-pag pie-pag-izq">
+              <span className="pie-nombre-marca">
+                Demo Sistema de Inmobiliaria
+              </span>
               <br></br>
-              <span class="pie-derechos-aut">
+              <span className="pie-derechos-aut">
                 ©2021 Todos los derechos están protegidos sobre el autor.
               </span>
             </div>
-            <div class="mod-pie-pag pie-pag-der">
+            <div className="mod-pie-pag pie-pag-der">
               <address>
                 Bolivia, La Paz
                 <br></br>
