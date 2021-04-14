@@ -1,4 +1,4 @@
-$primaryColor: #555151;
+$primaryColor: #0d335d;
 $hoverItem: #62929a;
 $darkColor: #272727;
 $colorItems: #fff;
@@ -22,7 +22,7 @@ nav {
   height: 60px;
   z-index: 5000;
   background: $primaryColor;
-  box-shadow: 0 10px 15px rgba(0,0,0,.1);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .gen-item {

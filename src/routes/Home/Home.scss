@@ -1,4 +1,81 @@
-.cont-inicio {
-  position: fixed;
-  margin-left: -80px;
+img {
+  border-radius: 20%;
+}
+
+.item {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.images {
+}
+
+.contenedor {
+  width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+#mainimage {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+#maintext {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+#maintexttwo {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+#redessociales {
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+#footerpagina {
+  background-color: #232020;
+  width: 100%;
+  height: 100px;
+  padding-top: 10px;
+  padding-bottom: 0;
+  color: #fff;
+}
+
+.mod-pie-pag {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.pie-pag-izq {
+  float: left;
+}
+
+.pie-pag-der {
+  float: right;
+}
+
+.pie-nombre-marca {
+  font-size: 200%;
+}
+
+.pie-derechos-aut {
+  font-size: 80%;
+}
+
+.mod-pie-pag address {
+  font-size: 80%;
+  padding-top: 10px;
 }

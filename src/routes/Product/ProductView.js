@@ -274,7 +274,7 @@ class View extends Component {
       "Dirección",
       "Tipo",
       "Código Folio",
-      "Precio pastastral",
+      "Precio Catastral",
       "Superficie",
       "Superficie construida",
     ];
