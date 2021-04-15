@@ -66,32 +66,19 @@ class View extends Component {
         <div id="maintext">
           <h5>Misión</h5>
           <p>
-            Su impacto puede ser inmediato como de largo alcance, e incluye
-            múltiples consecuencias físicas, sexuales, psicológicas, e incluso
-            mortales, para mujeres y niñas. Afecta negativamente el bienestar de
-            las mujeres e impide su plena participación en la sociedad. Además
-            de tener consecuencias negativas para las mujeres, la violencia
-            también impacta su familia, comunidad y el país. Los altos costos
-            asociados, que comprenden desde un aumento en gastos de atención de
-            salud y servicios jurídicos a pérdidas de productividad, impactan en
-            presupuestos públicos nacionales y representan un obstáculo al
-            desarrollo.
+            Ser una organización empresarial dedicada a asistir a nuestros
+            clientes en los momentos críticos presentándoles servicios dignos a
+            través de un grupo humano con profesionalismo y sensibilidad a sus
+            necesidades.
           </p>
         </div>
 
         <div id="maintexttwo">
           <h5>Visión</h5>
           <p>
-            Su impacto puede ser inmediato como de largo alcance, e incluye
-            múltiples consecuencias físicas, sexuales, psicológicas, e incluso
-            mortales, para mujeres y niñas. Afecta negativamente el bienestar de
-            las mujeres e impide su plena participación en la sociedad. Además
-            de tener consecuencias negativas para las mujeres, la violencia
-            también impacta su familia, comunidad y el país. Los altos costos
-            asociados, que comprenden desde un aumento en gastos de atención de
-            salud y servicios jurídicos a pérdidas de productividad, impactan en
-            presupuestos públicos nacionales y representan un obstáculo al
-            desarrollo.
+            Ser un modelo empresarial de cambio con responsabilidad social en
+            Bolivia, con presencia internacional y ejemplo de servicio al
+            cliente.
           </p>
         </div>
 

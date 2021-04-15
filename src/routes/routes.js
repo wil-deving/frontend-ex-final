@@ -5,6 +5,7 @@ import Client from "./Client/";
 import Offer from "./Offer/";
 import Sale from "./Sale/";
 import SalesReport from "./SalesReport/";
+import InquiriesReport from "./InquiriesReport/";
 
 // Seccion que contruye el array para Router de REACT
 const routes = [
@@ -14,5 +15,6 @@ const routes = [
   { path: "/offers", component: Offer },
   { path: "/sales", component: Sale },
   { path: "/sales-report", component: SalesReport },
+  { path: "/inquiries-report", component: InquiriesReport },
 ];
 export default routes;
