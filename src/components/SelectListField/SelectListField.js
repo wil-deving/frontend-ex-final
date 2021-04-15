@@ -70,10 +70,6 @@ class SelectListField extends Component {
     }
   }
 
-  componentDidMount() {
-    //console.log('componentDidMountComponent')
-  }
-
   componentWillReceiveProps(nextProps) {
     //console.log('componentWillReceiveProps', nextProps)
     if (nextProps.visible !== null) {
@@ -102,18 +98,6 @@ class SelectListField extends Component {
     return true;
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    //console.log('componentWillUpdateComponent', nextProps, nextState)
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    //console.log('componentDidUpdateComponent', prevProps, prevState)
-  }
-
-  componentWillUnmount() {
-    //console.log('componentWillUnmountComponent')
-  }
-
   armarOptions() {
     // console.log('armarOptions', this.state.optionsList)
     let defaultOptions = [{ tag: "Seleccionar...", value: "", name: "" }];
@@ -121,7 +105,6 @@ class SelectListField extends Component {
 
     let options = forMapArr.map((itemOp, numOp) => {
       let enabled = true;
-      let ddd = false;
       if (itemOp.value === "2") {
         //enabled = false
       }

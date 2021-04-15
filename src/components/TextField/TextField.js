@@ -52,14 +52,6 @@ class TextField extends Component {
     enabled: true,
   };
 
-  componentWillMount() {
-    //console.log('componentWillMountComponent')
-  }
-
-  componentDidMount() {
-    //console.log('componentDidMountComponent')
-  }
-
   componentWillReceiveProps(nextProps) {
     //console.log('componentWillReceiveProps', nextProps)
     if (nextProps.visible !== null) {
@@ -83,18 +75,6 @@ class TextField extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     //console.log('shouldComponentUpdateComponent', nextProps, nextState)
     return true;
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    //console.log('componentWillUpdateComponent', nextProps, nextState)
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    //console.log('componentDidUpdateComponent', prevProps, prevState)
-  }
-
-  componentWillUnmount() {
-    //console.log('componentWillUnmountComponent')
   }
 
   onChangeField() {

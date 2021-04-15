@@ -42,14 +42,6 @@ class ContentTable extends Component {
     headOrderTable: [],
   };
 
-  componentWillMount() {
-    //console.log('componentWillMountComponent')
-  }
-
-  componentDidMount() {
-    //console.log('componentDidMountComponent')
-  }
-
   componentWillReceiveProps(nextProps) {
     //console.log('componentWillReceiveProps', nextProps)
     if (nextProps.visible !== null) {
@@ -73,18 +65,6 @@ class ContentTable extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     //console.log('shouldComponentUpdateComponent', nextProps, nextState)
     return true;
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    //console.log('componentWillUpdateComponent', nextProps, nextState)
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    //console.log('componentDidUpdateComponent', prevProps, prevState)
-  }
-
-  componentWillUnmount() {
-    //console.log('componentWillUnmountComponent')
   }
 
   armarRowTable(itemL, counter = 0) {
