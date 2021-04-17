@@ -46,6 +46,15 @@ nav ul li {
   display: inline-block;
 }
 
+nav ul button {
+  background: $primaryColor;
+  border-color: $primaryColor;
+  color: $colorItems;
+  position: relative;
+  list-style: none;
+  display: inline-block;
+}
+
 .gen-item:hover {
   background: $hoverItem;
   color: white;

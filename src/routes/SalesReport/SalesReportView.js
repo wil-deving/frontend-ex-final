@@ -40,6 +40,10 @@ class View extends Component {
   };
 
   componentDidMount() {
+    const storage = localStorage.getItem("userData");
+    const dataStorage = JSON.parse(storage);
+    if (!dataStorage) return this.props.history.push("/");
+    if (!dataStorage.userId) return this.props.history.push("/");
     this.getSalesView();
   }
 

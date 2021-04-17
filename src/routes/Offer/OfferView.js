@@ -17,7 +17,10 @@ import NumberField from "./../../components/NumberField/NumberField.js";
 import ButtonField from "./../../components/ButtonField/ButtonField.js";
 import TableField from "./../../components/TableField/TableField.js";
 
+import AppContext from "./../../routes/ContextApp";
+
 class View extends Component {
+  static contextType = AppContext;
   static propTypes = {
     offerId: PropTypes.string,
     productList: PropTypes.array,
@@ -74,6 +77,10 @@ class View extends Component {
   };
 
   componentDidMount() {
+    const storage = localStorage.getItem("userData");
+    const dataStorage = JSON.parse(storage);
+    if (!dataStorage) return this.props.history.push("/");
+    if (!dataStorage.userId) return this.props.history.push("/");
     this.getProductListAndCostumersForOffer();
   }
 

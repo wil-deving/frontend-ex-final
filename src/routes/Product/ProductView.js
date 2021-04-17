@@ -18,7 +18,10 @@ import NumberField from "./../../components/NumberField/NumberField.js";
 import ButtonField from "./../../components/ButtonField/ButtonField.js";
 import TableField from "./../../components/TableField/TableField.js";
 
+import AppContext from "./../../routes/ContextApp";
+
 class View extends Component {
+  static contextType = AppContext;
   static propTypes = {
     idProduct: PropTypes.string,
     productTypeList: PropTypes.array,
@@ -80,6 +83,11 @@ class View extends Component {
   };
 
   componentDidMount() {
+    const storage = localStorage.getItem("userData");
+    const dataStorage = JSON.parse(storage);
+    if (!dataStorage) return this.props.history.push("/");
+    if (!dataStorage.userId) return this.props.history.push("/");
+
     getProductTypeList().then((respProductType) => {
       if (respProductType.status === 200) {
         this.setState({ productTypeList: respProductType.viewResponse });
@@ -157,6 +165,8 @@ class View extends Component {
   }
 
   saveProduct() {
+    const usuario = this.context;
+    usuario.isAuth = true;
     if (this.validateFields()) {
       alertify.confirm(
         "Demo PROGRAMACION 3 dice",

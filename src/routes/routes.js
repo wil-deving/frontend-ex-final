@@ -9,7 +9,7 @@ import InquiriesReport from "./InquiriesReport/";
 
 // Seccion que contruye el array para Router de REACT
 const routes = [
-  { path: "/", component: Home },
+  //{ path: "/", component: Home },
   { path: "/products", component: Product },
   { path: "/clients", component: Client },
   { path: "/offers", component: Offer },
