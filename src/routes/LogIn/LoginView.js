@@ -8,6 +8,8 @@ import TitleSectionField from "./../../components/TitleSeccionField/TitleSection
 import TextField from "./../../components/TextField/TextField.js";
 import ButtonField from "./../../components/ButtonField/ButtonField.js";
 
+import "./Login.scss";
+
 import AppContext from "./../../routes/ContextApp";
 
 class Login extends Component {
@@ -43,11 +45,11 @@ class Login extends Component {
   }
 
   validateFields() {
-    if (this.setState.userName === "" || this.setState.userName === null) {
+    if (this.state.userName === "" || this.state.userName === null) {
       alertify.warning("Campo usuario debe ser llenado");
       return false;
     }
-    if (this.setState.pass === "" || this.setState.pass === null) {
+    if (this.state.pass === "" || this.state.pass === null) {
       alertify.warning("Campo password debe ser llenado");
       return false;
     }
@@ -87,7 +89,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="contenedor">
         <TitleSectionField texto={"Inicio de Sesión"} />
 
         <TextField
